@@ -2,9 +2,9 @@
 
 每天北京时间 **09:00** 自动运行（含周末），生成一份报告并推送到你的钉钉群：
 
-- **GitHub 开源项目热度榜 TOP10**：官方 Search API 抓取近 7 天新创建、Star 数最高的 10 个项目，包含中文简介 + 用途介绍
-- **昨日 AI 领域动态**：聚合 Hacker News、Reddit r/MachineLearning、arXiv cs.AI、机器之心、量子位 5 个来源
-- 中文简介与摘要由 **DeepSeek API** 生成
+- **GitHub 开源项目热度榜 TOP5**：官方 Search API 抓取近 7 天新创建、Star 数最高的 5 个项目，以**面向新手**的口吻介绍每个项目——这是什么、能用来做什么、适用领域、对新手有什么帮助
+- **昨日 AI 领域动态（每天约 5~6 条精选）**：从 Hacker News、Reddit r/MachineLearning、arXiv cs.AI、量子位、新智元、InfoQ 中文 6 个来源均衡挑选
+- 中文介绍与摘要由 **DeepSeek API** 生成
 - 报告同时生成 **Markdown / Word / PDF** 三种格式，提交到仓库 `daily-reports/YYYY-MM-DD/`，钉钉消息内附下载链接
 
 ## 一、需要配置的 Secrets（2~3 个）

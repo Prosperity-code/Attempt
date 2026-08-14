@@ -37,9 +37,9 @@ def main() -> None:
     ding_secret = os.environ.get("DINGTALK_SECRET", "").strip()
     llm_configured = bool(os.environ.get("DEEPSEEK_API_KEY", "").strip())
 
-    # 1. GitHub 热榜
-    print(f"[1/5] 采集 GitHub 热榜（{date_str}）...")
-    projects = sources.github_trending(token=gh_token, limit=10)
+    # 1. GitHub 热榜（面向新手深度介绍，取前 5 名）
+    print(f"[1/5] 采集 GitHub 热榜 TOP5（{date_str}）...")
+    projects = sources.github_trending(token=gh_token, limit=5)
     if not projects:
         raise SystemExit("GitHub 热榜采集失败：未获取到任何项目，终止运行")
     for p in projects:
@@ -61,6 +61,8 @@ def main() -> None:
                 s = project_sums[i] if i < len(project_sums) else {}
                 p["introduction"] = s.get("introduction") or p.get("description") or "（暂无简介）"
                 p["usage"] = s.get("usage", "")
+                p["fields"] = s.get("fields", "")
+                p["help"] = s.get("help", "")
             for it in news:
                 it["summary"] = news_sums.get(it["url"], "")
             used_llm = True
@@ -73,6 +75,8 @@ def main() -> None:
         for p in projects:
             p["introduction"] = p.get("description") or "（暂无简介）"
             p["usage"] = ""
+            p["fields"] = ""
+            p["help"] = ""
         for it in news:
             it["summary"] = ""
 

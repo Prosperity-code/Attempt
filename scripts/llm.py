@@ -61,11 +61,14 @@ def summarize_projects(projects: list[dict]) -> list[dict] | None:
         for p in projects
     ]
     system = (
-        "你是一名资深技术编辑。下面是一批 GitHub 开源项目（近 7 天新创建的热门项目）。"
-        "请为每个项目写两段中文内容：\n"
-        "1) introduction：2~3 句中文简介，概括项目是什么、解决什么问题；\n"
-        "2) usage：1~2 句中文用途介绍，说明开发者可以用它来做什么、典型使用场景。\n"
-        '以 JSON 对象返回，格式：{"projects": [{"name": "项目全名", "introduction": "...", "usage": "..."}]}，'
+        "你是一名资深技术编辑，面向**完全没有编程背景的新手读者**，用通俗易懂、亲切的中文介绍 GitHub 开源项目。"
+        "介绍时要像对朋友解释一样，避免堆砌术语；必须用到术语时，用一句大白话解释它。"
+        "对每个项目输出四段内容：\n"
+        "1) introduction：这个项目**是什么、主要做什么**（2~3 句，讲清楚它的核心功能）；\n"
+        "2) usage：**能用来做什么**、典型使用场景（1~2 句，具体一点）；\n"
+        "3) fields：**适用领域**（一句话，用顿号列出适用的行业/场景，如“网页开发、数据分析、AI 学习”）；\n"
+        "4) help：**对新手读者有什么帮助或学习价值**（1~2 句，例如“适合零基础入门学习 XX”“可以直接帮你完成 XX”）\n"
+        '以 JSON 对象返回，格式：{"projects": [{"name": "项目全名", "introduction": "...", "usage": "...", "fields": "...", "help": "..."}]}，'
         "顺序与输入一致，只返回 JSON，不要输出任何多余文字。"
     )
     data = _chat_json(client, system, json.dumps(payload, ensure_ascii=False), max_tokens=3000)

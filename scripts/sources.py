@@ -231,15 +231,29 @@ def _rss_items(url: str, source: str, day: dt.date, limit: int) -> list[dict]:
     return out
 
 
+NEWS_TARGET = 6  # 每日精选 AI 动态条数（约 5 条左右）
+
+
 def ai_news() -> list[dict]:
-    """聚合全部新闻源，返回昨日 AI 动态（按来源分组顺序排列）。"""
+    """聚合全部新闻源，返回昨日精选 AI 动态（约 6 条，来源均衡）。
+
+    组成：Hacker News 2 条 + Reddit 1 条 + arXiv 1 条 + 中文源 2 条。
+    任一来源失败时自动由其他来源补足。
+    """
     day = _utc_yesterday()
     items: list[dict] = []
-    items += hn_stories(day, limit=5)
-    items += reddit_machinelearning(day, limit=4)
-    items += arxiv_csai(day, limit=3)
-    for url, name in RSS_SOURCES:
-        items += _rss_items(url, name, day, limit=4)
+    items += hn_stories(day, limit=2)
+    items += reddit_machinelearning(day, limit=1)
+    items += arxiv_csai(day, limit=1)
+
+    # 中文源按"源轮换"取 2 条，避免被单一来源刷屏
+    cn_lists = [_rss_items(url, name, day, limit=2) for url, name in RSS_SOURCES]
+    cn_pool: list[dict] = []
+    for i in range(2):
+        for lst in cn_lists:
+            if i < len(lst):
+                cn_pool.append(lst[i])
+    items += cn_pool[:2]
     return items
 
 

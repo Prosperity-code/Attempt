@@ -42,19 +42,25 @@ def render_markdown(today, projects: list[dict], news: list[dict], used_llm: boo
         f"# 📊 每日 AI 动态与 GitHub 热榜（{date_str}）",
         "",
         f"> 数据统计：GitHub 热榜 {len(projects)} 项 · AI 动态 {len(news)} 条"
-        + (" · 中文摘要由 DeepSeek 生成" if used_llm else ""),
+        + (" · 中文介绍由 DeepSeek 生成" if used_llm else ""),
         "",
-        "## 一、GitHub 开源项目热度榜 TOP10",
+        f"## 一、GitHub 开源项目热度榜 TOP{len(projects)}",
         "",
     ]
     for i, p in enumerate(projects, 1):
         intro = p.get("introduction") or p.get("description") or "（暂无简介）"
         usage = p.get("usage") or ""
+        fields = p.get("fields") or ""
+        help_text = p.get("help") or ""
         lines.append(f"### {i}. {p['name']}  ⭐ {_fmt_stars(p['stars'])}")
         lines.append(f"**语言**: {p['language']} ｜ **Stars**: {_fmt_stars(p['stars'])} ｜ **Forks**: {_fmt_stars(p['forks'])}")
-        lines.append(f"**简介**: {intro}")
+        lines.append(f"**这是什么**: {intro}")
         if usage:
-            lines.append(f"**用途**: {usage}")
+            lines.append(f"**能用来做什么**: {usage}")
+        if fields:
+            lines.append(f"**适用领域**: {fields}")
+        if help_text:
+            lines.append(f"**对新手有什么帮助**: {help_text}")
         lines.append(f"🔗 [项目地址]({p['url']})")
         lines.append("")
     lines += ["## 二、昨日 AI 领域动态", ""]
@@ -77,16 +83,20 @@ def render_docx(today, projects: list[dict], news: list[dict], used_llm: bool, p
     doc.add_heading(f"每日 AI 动态与 GitHub 热榜（{today.isoformat()}）", level=0)
     doc.add_paragraph(
         f"数据统计：GitHub 热榜 {len(projects)} 项 · AI 动态 {len(news)} 条"
-        + (" · 中文摘要由 DeepSeek 生成" if used_llm else "")
+        + (" · 中文介绍由 DeepSeek 生成" if used_llm else "")
     )
-    doc.add_heading("一、GitHub 开源项目热度榜 TOP10", level=1)
+    doc.add_heading(f"一、GitHub 开源项目热度榜 TOP{len(projects)}", level=1)
     for i, p in enumerate(projects, 1):
         doc.add_heading(f"{i}. {p['name']}  ⭐ {_fmt_stars(p['stars'])}", level=2)
         para = doc.add_paragraph()
         para.add_run(f"语言：{p['language']} ｜ Stars：{_fmt_stars(p['stars'])} ｜ Forks：{_fmt_stars(p['forks'])}\n")
-        para.add_run(f"简介：{p.get('introduction') or p.get('description') or '（暂无简介）'}\n")
+        para.add_run(f"这是什么：{p.get('introduction') or p.get('description') or '（暂无简介）'}\n")
         if p.get("usage"):
-            para.add_run(f"用途：{p['usage']}\n")
+            para.add_run(f"能用来做什么：{p['usage']}\n")
+        if p.get("fields"):
+            para.add_run(f"适用领域：{p['fields']}\n")
+        if p.get("help"):
+            para.add_run(f"对新手有什么帮助：{p['help']}\n")
         para.add_run(f"链接：{p['url']}")
     doc.add_heading("二、昨日 AI 领域动态", level=1)
     for source, items in _group_by_source(news).items():
@@ -128,15 +138,19 @@ def render_pdf(today, projects: list[dict], news: list[dict], used_llm: bool, pa
         )
     )
     story.append(Spacer(1, 6))
-    story.append(Paragraph("一、GitHub 开源项目热度榜 TOP10", styles["h1"]))
+    story.append(Paragraph(f"一、GitHub 开源项目热度榜 TOP{len(projects)}", styles["h1"]))
     for i, p in enumerate(projects, 1):
         story.append(Paragraph(f"{i}. {_esc(p['name'])}　⭐ {_fmt_stars(p['stars'])}", styles["h2"]))
         body = (
             f"语言：{_esc(p['language'])} ｜ Stars：{_fmt_stars(p['stars'])} ｜ Forks：{_fmt_stars(p['forks'])}<br/>"
-            f"简介：{_esc(p.get('introduction') or p.get('description') or '（暂无简介）')}<br/>"
+            f"这是什么：{_esc(p.get('introduction') or p.get('description') or '（暂无简介）')}<br/>"
         )
         if p.get("usage"):
-            body += f"用途：{_esc(p['usage'])}<br/>"
+            body += f"能用来做什么：{_esc(p['usage'])}<br/>"
+        if p.get("fields"):
+            body += f"适用领域：{_esc(p['fields'])}<br/>"
+        if p.get("help"):
+            body += f"对新手有什么帮助：{_esc(p['help'])}<br/>"
         body += f'链接：<link href="{_esc(p["url"])}" color="blue">{_esc(p["url"])}</link>'
         story.append(Paragraph(body, styles["body"]))
     story.append(Paragraph("二、昨日 AI 领域动态", styles["h1"]))
