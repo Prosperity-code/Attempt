@@ -1,0 +1,52 @@
+name: Daily Report Push
+
+on:
+  schedule:
+    # 北京时间每天 09:00 = UTC 01:00（GitHub Actions 的 cron 使用 UTC）
+    - cron: "0 1 * * *"
+  workflow_dispatch: # 支持在 Actions 页面手动触发，方便测试
+
+permissions:
+  contents: write # 允许把生成的报告 commit 回仓库
+
+concurrency:
+  group: daily-report
+  cancel-in-progress: false
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate report
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          DINGTALK_WEBHOOK: ${{ secrets.DINGTALK_WEBHOOK }}
+          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.ref_name }}
+        run: python scripts/generate_report.py
+
+      - name: Commit and push reports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add daily-reports
+          if ! git diff --cached --quiet; then
+            git commit -m "docs: 每日报告 $(date -u +%Y-%m-%d)"
+            git push
+          else
+            echo "没有新增报告，跳过提交"
+          fi
