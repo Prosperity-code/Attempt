@@ -83,6 +83,11 @@ def main() -> None:
     # 4. 渲染
     out_dir = Path("daily-reports") / date_str
     out_dir.mkdir(parents=True, exist_ok=True)
+    # 去重标记：当天报告已成功推送到钉钉后写入 .sent，
+    # 兜底定时任务重复执行时据此跳过推送，避免重复消息
+    already_sent = (out_dir / ".sent").exists()
+    if already_sent:
+        print(f"       （检测到今日报告已推送过，稍后跳过钉钉推送，文件照常重新生成）")
     print(f"[4/5] 渲染报告 → {out_dir}")
     md_text = render.render_markdown(today, projects, news, used_llm)
     (out_dir / "report.md").write_text(md_text, encoding="utf-8")
@@ -92,7 +97,9 @@ def main() -> None:
 
     # 5. 钉钉推送
     print("[5/5] 推送钉钉 ...")
-    if webhook:
+    if already_sent:
+        print("       今日报告已推送过（.sent 标记），跳过推送")
+    elif webhook:
         page = f"https://github.com/{REPO}/tree/{BRANCH}/daily-reports/{date_str}"
         raw_docx = f"https://github.com/{REPO}/raw/{BRANCH}/daily-reports/{date_str}/report.docx"
         raw_pdf = f"https://github.com/{REPO}/raw/{BRANCH}/daily-reports/{date_str}/report.pdf"
@@ -102,7 +109,9 @@ def main() -> None:
             f"📄 [下载 Word 版]({raw_docx}) ｜ [下载 PDF 版]({raw_pdf})"
         )
         n = notify.send_markdown(webhook, f"每日报告 {date_str}", md_text + footer, secret=ding_secret)
-        print(f"       已发送 {n} 条消息")
+        # 推送成功后才写标记，失败时兜底任务可重试
+        (out_dir / ".sent").write_text("sent", encoding="utf-8")
+        print(f"       已发送 {n} 条消息，已写入去重标记")
     else:
         print("       未配置 DINGTALK_WEBHOOK，跳过推送")
 
