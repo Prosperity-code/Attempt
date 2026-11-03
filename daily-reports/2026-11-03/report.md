@@ -4,66 +4,66 @@
 
 ## 一、GitHub 开源项目热度榜 TOP5
 
-### 1. deepseek-ai/dsh-superagent-prototype  ⭐ 14,677
-**语言**: TypeScript ｜ **Stars**: 14,677 ｜ **Forks**: 1,568
-**这是什么**: 这是一个探索更自主的智能体系统的原型项目。它用 TypeScript 编写，旨在让 AI 智能体能够更独立地完成任务，减少人工干预。
-**能用来做什么**: 可以用来研究和实验自主 AI 智能体的行为，比如让智能体自动规划并执行多步任务。
-**适用领域**: 人工智能研究、自动化任务处理、智能助手开发
-**对新手有什么帮助**: 适合对 AI 智能体感兴趣的新手了解自主智能体的基本概念和实现思路。
+### 1. deepseek-ai/dsh-superagent-prototype  ⭐ 14,774
+**语言**: TypeScript ｜ **Stars**: 14,774 ｜ **Forks**: 1,578
+**这是什么**: 这是一个实验性的AI智能体系统原型，旨在让AI更自主地完成任务。它用TypeScript编写，展示了如何构建能自己规划、执行复杂任务的AI代理。
+**能用来做什么**: 可以用来研究或开发能自动处理多步骤任务的AI助手，比如自动收集信息、整理数据等。
+**适用领域**: AI研究、自动化任务、智能助手开发
+**对新手有什么帮助**: 适合对AI代理感兴趣的新手了解智能体系统的基本结构和设计思路。
 🔗 [项目地址](https://github.com/deepseek-ai/dsh-superagent-prototype)
 
-### 2. heydamir/unslop  ⭐ 6,638
-**语言**: JavaScript ｜ **Stars**: 6,638 ｜ **Forks**: 337
-**这是什么**: 这是一个 Claude 技能，能把看起来像 AI 生成的、粗糙的界面变成经过设计的漂亮界面。它用 JavaScript 编写，帮助改善网页或应用的外观。
-**能用来做什么**: 当你用 AI 快速生成界面但觉得不够美观时，可以用它来优化设计，让界面更专业。
-**适用领域**: 网页设计、UI 美化、前端开发
-**对新手有什么帮助**: 适合零基础的设计爱好者快速提升界面颜值，学习如何将简单界面转化为专业设计。
+### 2. heydamir/unslop  ⭐ 6,670
+**语言**: JavaScript ｜ **Stars**: 6,670 ｜ **Forks**: 339
+**这是什么**: 这是一个Claude技能工具，能把看起来像AI生成的、粗糙的界面变成经过设计的漂亮界面。它用JavaScript编写，帮助改善网页或应用的外观。
+**能用来做什么**: 当你用AI工具快速生成界面但觉得不好看时，可以用它来优化设计，让界面更专业。
+**适用领域**: 网页设计、UI美化、前端开发
+**对新手有什么帮助**: 适合新手快速提升界面颜值，无需深入设计知识就能获得更好的视觉效果。
 🔗 [项目地址](https://github.com/heydamir/unslop)
 
-### 3. wangzan101/Mika  ⭐ 5,679
-**语言**: Kotlin ｜ **Stars**: 5,679 ｜ **Forks**: 1,105
-**这是什么**: Mika 是一个运行在 Android 设备上的本地 AI 智能体，可以操作手机上的应用和网页，帮你自动完成各种任务。它用 Kotlin 编写，直接在设备上运行。
-**能用来做什么**: 比如让 Mika 自动帮你发送消息、浏览网页或执行重复性手机操作，节省时间。
-**适用领域**: 移动自动化、个人助手、Android 开发
-**对新手有什么帮助**: 适合想了解手机自动化或 AI 助手如何工作的新手，可以学习智能体如何与手机应用交互。
+### 3. wangzan101/Mika  ⭐ 5,711
+**语言**: Kotlin ｜ **Stars**: 5,711 ｜ **Forks**: 1,114
+**这是什么**: Mika是一个运行在安卓手机上的本地AI助手，能自动操作手机应用和网页来帮你完成任务。它用Kotlin编写，直接在设备上运行，保护隐私。
+**能用来做什么**: 可以让你用自然语言指挥手机自动完成操作，比如自动填写表单、发送消息、搜索信息等。
+**适用领域**: 移动自动化、个人助手、安卓开发
+**对新手有什么帮助**: 适合想了解手机自动化或开发个人AI助手的新手学习参考。
 🔗 [项目地址](https://github.com/wangzan101/Mika)
 
-### 4. storytold/craft-anything  ⭐ 5,348
-**语言**: Rust ｜ **Stars**: 5,348 ｜ **Forks**: 904
-**这是什么**: 这个项目旨在帮助你理解任何软件的工作原理，并动手打造自己的软件。它用 Rust 编写，可能提供工具或框架来分析和构建软件。
-**能用来做什么**: 可以用来学习软件内部机制，或者作为起点创建自己的软件项目。
-**适用领域**: 软件工程、逆向工程、编程学习
-**对新手有什么帮助**: 适合想深入理解软件如何运行的新手，通过实践学习软件构造原理。
+### 4. storytold/craft-anything  ⭐ 5,423
+**语言**: Rust ｜ **Stars**: 5,423 ｜ **Forks**: 926
+**这是什么**: 这个项目旨在帮助人们理解任何软件的工作原理，并动手制作自己的版本。它用Rust编写，可能提供了一种分析软件和构建类似工具的方法。
+**能用来做什么**: 可以用来学习软件内部机制，或者作为模板来创建自己的软件工具。
+**适用领域**: 软件教育、逆向工程、工具开发
+**对新手有什么帮助**: 适合想深入理解软件构造的新手，通过实践学习如何从零打造软件。
 🔗 [项目地址](https://github.com/storytold/craft-anything)
 
-### 5. valentderah/totk-pc-recomp  ⭐ 4,175
-**语言**: C ｜ **Stars**: 4,175 ｜ **Forks**: 335
-**这是什么**: 这是一个将《塞尔达传说：王国之泪》静态重编译到 Windows 和 Linux 原生平台的工程，使用 Vulkan 渲染器。注意，它不包含游戏文件，需要用户自备。
-**能用来做什么**: 可以让玩家在 PC 上以更高性能或更好画质运行这款游戏（需合法拥有游戏文件）。
-**适用领域**: 游戏重编译、PC 游戏、模拟器技术
-**对新手有什么帮助**: 适合对游戏移植和底层技术感兴趣的新手了解静态重编译和图形渲染的基本概念。
+### 5. valentderah/totk-pc-recomp  ⭐ 4,187
+**语言**: C ｜ **Stars**: 4,187 ｜ **Forks**: 336
+**这是什么**: 这是一个将《塞尔达传说：王国之泪》游戏静态重编译到Windows和Linux电脑上的项目，使用Vulkan渲染器。它不包含游戏文件，需要用户自备。
+**能用来做什么**: 可以让玩家在电脑上以更高性能运行这款游戏，享受更流畅的体验。
+**适用领域**: 游戏重编译、PC游戏、模拟器开发
+**对新手有什么帮助**: 适合对游戏移植或底层编程感兴趣的新手了解重编译技术，但需要一定技术基础。
 🔗 [项目地址](https://github.com/valentderah/totk-pc-recomp)
 
 ## 二、昨日 AI 领域动态
 
 ### Hacker News
 
-- **[Ubuntu still has not released patch for Linux 0day RCE in almost 3 weeks](https://freenode.net/article/ubuntu-lts-kernels-still-unfixed-for-critical-cve-2026-98432)**（👍 446）
-  - 摘要：Ubuntu 近三周仍未发布针对 Linux 一个 0day 远程代码执行漏洞的补丁，暴露了关键开源基础设施在漏洞响应速度上的隐患，值得系统管理员高度警惕。
-- **[Oracle files to sell $20B in new stock, bonds to finance AI buildout](https://www.cnbc.com/2026/11/02/oracle-files-to-sell-20-billion-in-new-stock-bonds-to-finance-ai-buildout.html)**（👍 184）
-  - 摘要：甲骨文申请发行 200 亿美元新股与债券，用于为 AI 基础设施建设融资，反映出科技巨头为支撑算力扩张正大规模加杠杆，AI 资本开支竞赛持续升温。
+- **[Ubuntu still has not released patch for Linux 0day RCE in almost 3 weeks](https://freenode.net/article/ubuntu-lts-kernels-still-unfixed-for-critical-cve-2026-98432)**（👍 457）
+  - 摘要：Ubuntu 近三周仍未发布针对 Linux 零日远程代码执行漏洞的补丁，安全风险持续暴露，值得关注官方响应速度与用户防护措施。
+- **[Oracle files to sell $20B in new stock, bonds to finance AI buildout](https://www.cnbc.com/2026/11/02/oracle-files-to-sell-20-billion-in-new-stock-bonds-to-finance-ai-buildout.html)**（👍 185）
+  - 摘要：Oracle 申请发行 200 亿美元新股与债券，用于融资 AI 基础设施建设，反映科技巨头为 AI 算力扩张大规模举债的趋势。
 
 ### arXiv cs.AI
 
-- **[Visual-to-Executable Procedural Reconstruction of Buildings](https://arxiv.org/abs/2611.03143v1)**
-  - 摘要：该 arXiv 论文研究从单张视觉图像自动重建建筑的可执行程序化模型，有望简化 3D 内容创作流程，对游戏、建筑与仿真领域具有应用价值。
+- **[Pixel-UMI: Learning Environment-Aware Whole-Body Manipulation from Sensorized Human Demonstrations](https://arxiv.org/abs/2611.03647v1)**
+  - 摘要：arXiv 论文提出 Pixel-UMI，利用传感器化的人类演示学习环境感知的全身操作，推动机器人从人类示范中习得复杂全身操控能力。
 
 ### 量子位
 
 - **[顶级AI翻车的活儿，被这个新出的免费国产AI接住了！](https://www.qbitai.com/2026/11/507277.html)**
-  - 摘要：文章介绍一款新出的免费国产 AI 在某项高难度任务上接住了顶级 AI 模型翻车的场景，体现国产模型在特定能力上的追赶与差异化竞争力。
+  - 摘要：量子位报道一款新出的免费国产 AI 在顶级 AI 翻车的任务上表现出色，值得关注国产模型在实用场景中的能力突破。
 
 ### 新智元
 
 - **[爱诗科技PixVerse 与 OpenAI 共同推出产品集成和创作者教育计划，高效打通 AI 创意全流程](https://aiera.com.cn/2026/11/02/other/admin/121894/%e7%88%b1%e8%af%97%e7%a7%91%e6%8a%80pixverse-%e4%b8%8e-openai-%e5%85%b1%e5%90%8c%e6%8e%a8%e5%87%ba%e4%ba%a7%e5%93%81%e9%9b%86%e6%88%90%e5%92%8c%e5%88%9b%e4%bd%9c%e8%80%85%e6%95%99%e8%82%b2%e8%ae%a1/)**
-  - 摘要：爱诗科技旗下 PixVerse 与 OpenAI 联合推出产品集成和创作者教育计划，旨在打通 AI 创意生成到落地的全流程，显示国内外 AI 视频工具正加速生态合作。
+  - 摘要：爱诗科技 PixVerse 与 OpenAI 合作推出产品集成和创作者教育计划，旨在打通 AI 创意全流程，值得关注 AI 视频生成与生态合作动向。
